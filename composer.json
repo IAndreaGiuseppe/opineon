@@ -1,0 +1,43 @@
+{
+ "name": "agpretto/opineon",
+ "description": "Lightweight opinions component for websites",
+ "keywords": [
+  "opineon",
+  "opinion",
+  "comment",
+  "laravel"
+ ],
+ "type": "library",
+ "license": "MIT",
+ "homepage": "https://github.com/Mindexperiment/opineon",
+ "authors": [
+  {
+   "name": "Andrea Giuseppe Pretto",
+   "email": "andrewloyd@libero.it",
+   "homepage": "https://andreagiuseppe.com"
+  }
+ ],
+ "require": {
+  "laravel/framework": "5.8.*"
+ },
+ "autoload": {
+  "psr-4": {
+   "Agpretto\\Opineon\\": "src"
+  }
+ },
+ "autoload-dev": {
+  "psr-4": {
+   "Agpretto\\Opineon\\Test\\": "tests"
+  }
+ },
+ "scripts": {
+  "test": "vendor/bin/phpunit"
+ },
+ "extra": {
+  "laravel": {
+   "providers": [
+    "Agpretto\\Opineon\\OpineonServiceProvider"
+   ]
+  }
+ }
+}
