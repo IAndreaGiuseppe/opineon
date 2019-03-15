@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\User;
+use Agpretto\Opineon\Traits\HasComments;
 
 class Opinion extends Model {
 
- use SoftDeletes;
+ use SoftDeletes, HasComments;
 
  /**
   * The table associated with the model.

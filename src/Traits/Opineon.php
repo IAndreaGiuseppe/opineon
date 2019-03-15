@@ -4,7 +4,6 @@ namespace Agpretto\Opineon\Traits;
 
 trait Opineon {
 
-
  /**
   * User can express an opinion about a subject
   */
