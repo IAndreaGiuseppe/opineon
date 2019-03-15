@@ -12,9 +12,9 @@ class CreateOpinionsTable extends Migration {
   * @return void
   */
  public function up() {
-  Schema::create( 'opinions', function( Blueprint $table ) {
+  Schema::create( 'comments', function( Blueprint $table ) {
    $table->bigIncrements( 'id' );
-   $table->unsignedInteger( 'author_id' )->index();
+   $table->morphs( 'author' );
    $table->morphs( 'subject' );
    $table->longText( 'body' );
    $table->timestamps();
@@ -28,6 +28,6 @@ class CreateOpinionsTable extends Migration {
   * @return void
   */
  public function down() {
-  Schema::dropIfExists( 'opinions' );
+  Schema::dropIfExists( 'comments' );
  }
 }

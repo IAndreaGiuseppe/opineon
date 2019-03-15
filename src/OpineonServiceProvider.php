@@ -11,7 +11,9 @@ class OpineonServiceProvider extends ServiceProvider {
   *
   * @return void
   */
- public function register() {}
+ public function register() {
+  $this->mergeConfigFrom( __DIR__.'/../config/opineon.php', 'opineon' );
+ }
 
  /**
   * Bootstrap services.
