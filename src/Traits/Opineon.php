@@ -9,18 +9,30 @@ trait Opineon {
   * User can express an opinion about a subject
   */
  public function express( array $data, $subject ) {
-  $opinion = null;
-
-  if ( !$this->hasOpinionOn( $subject ) ) {
-   $data = array_merge( [
-    'subject_id' => $subject->id,
-    'subject_type' => get_class( $subject )
-   ], $data );
-
-   $opinion = $this->opinions()->create( $data );
+  if ( $this->hasOpinionOn( $subject ) ) {
+   $this->opinionOn( $subject )->first()->delete();
   }
 
+  $data = array_merge( [
+   'subject_id' => $subject->id,
+   'subject_type' => get_class( $subject )
+  ], $data );
+
+  $opinion = $this->opinions()->create( $data );
+
   return $opinion;
+ }
+
+ /**
+  * Get the opinion on subject
+  *
+  * @return 
+  */
+ public function opinionOn( $subject ) {
+  return $this->opinions()->where( [
+   'subject_id' => $subject->id,
+   'subject_type' => get_class( $subject )
+  ] );
  }
 
 
@@ -32,10 +44,7 @@ trait Opineon {
   * @return bool
   */
  public function hasOpinionOn( $subject ) {
-  return $this->opinions()->where( [
-   'subject_id' => $subject->id,
-   'subject_type' => get_class( $subject )
-  ] )->exists();
+  return $this->opinionOn( $subject )->exists();
  }
 
 
