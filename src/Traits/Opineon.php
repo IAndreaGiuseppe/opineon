@@ -23,9 +23,9 @@ trait Opineon {
  }
 
  /**
-  * Get the opinion on subject
+  * Get the opinions on subject
   *
-  * @return 
+  * @return \Illuminate\Database\Query\Builder
   */
  public function opinionOn( $subject ) {
   return $this->opinions()->where( [

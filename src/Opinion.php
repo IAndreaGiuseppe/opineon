@@ -5,7 +5,6 @@ namespace Agpretto\Opineon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use App\User;
 use Agpretto\Opineon\Traits\HasComments;
 
 class Opinion extends Model {
@@ -31,7 +30,7 @@ class Opinion extends Model {
   * An opinion always belongs to a user
   */
  public function author() {
-  return $this->belongsTo( User::class, 'author_id' );
+  return $this->belongsTo( config( 'opineon.userModel' ), 'author_id' );
  }
  
  /**
