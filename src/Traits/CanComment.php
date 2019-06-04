@@ -2,6 +2,8 @@
 
 namespace Agpretto\Opineon\Traits;
 
+use Agpretto\Opineon\Contracts\SubjectInterface;
+
 trait CanComment {
 
  /**
@@ -14,7 +16,7 @@ trait CanComment {
  /**
   * Comment subject
   */
- public function comment( array $data, $subject ) {
+ public function comment( array $data, SubjectInterface $subject ) {
   $data = array_merge( [
    'author_id' => $this->primaryId(),
    'author_type' => get_class()

@@ -2,12 +2,14 @@
 
 namespace Agpretto\Opineon\Traits;
 
+use Agpretto\Opineon\Contracts\SubjectInterface;
+
 trait Opineon {
 
  /**
   * User can express an opinion about a subject
   */
- public function express( array $data, $subject ) {
+ public function express( array $data, SubjectInterface $subject ) {
   if ( $this->hasOpinionOn( $subject ) ) {
    $this->opinionOn( $subject )->first()->delete();
   }
@@ -27,7 +29,7 @@ trait Opineon {
   *
   * @return \Illuminate\Database\Query\Builder
   */
- public function opinionOn( $subject ) {
+ public function opinionOn( SubjectInterface $subject ) {
   return $this->opinions()->where( [
    'subject_id' => $subject->id,
    'subject_type' => get_class( $subject )
@@ -42,7 +44,7 @@ trait Opineon {
   *
   * @return bool
   */
- public function hasOpinionOn( $subject ) {
+ public function hasOpinionOn( SubjectInterface $subject ) {
   return $this->opinionOn( $subject )->exists();
  }
 

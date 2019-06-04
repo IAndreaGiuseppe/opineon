@@ -5,9 +5,10 @@ namespace Agpretto\Opineon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Agpretto\Opineon\Contracts\SubjectInterface;
 use Agpretto\Opineon\Traits\HasComments;
 
-class Opinion extends Model {
+class Opinion extends Model implements SubjectInterface {
 
  use SoftDeletes, HasComments;
 
