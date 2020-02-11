@@ -7,34 +7,33 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model {
 
- use SoftDeletes;
+    Use SoftDeletes;
 
- /**
-  * The table associated with the model.
-  *
-  * @var string
-  */
- protected $table = 'comments';
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'comments';
 
- /**
-  * Don't auto-apply mass assignment protection.
-  */
- protected $guarded = [];
+    /**
+     * Don't auto-apply mass assignment protection.
+     */
+    protected $guarded = [];
 
+    // - relations
 
- // - relations
+    /**
+     * A comment belongs to an author
+     */
+    public function author() {
+        return $this->morphTo('author');
+    }
 
- /**
-  * A comment belongs to an author
-  */
- public function author() {
-  return $this->morphTo( 'author' );
- }
-
- /**
-  * A comment belongs to a subject
-  */
- public function subject() {
-  return $this->morphTo( 'subject' );
- }
+    /**
+     * A comment belongs to a subject
+     */
+    public function subject() {
+        return $this->morphTo('subject');
+    }
 }
